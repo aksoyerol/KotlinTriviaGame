@@ -5,6 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.get
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
+import com.erolaksoy.kotlintriviagame.databinding.FragmentGameBinding
+import kotlinx.android.synthetic.main.fragment_game.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,7 +39,30 @@ class GameFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_game, container, false)
+        val binding = DataBindingUtil.inflate<FragmentGameBinding>(
+            inflater,
+            R.layout.fragment_game,
+            container,
+            false
+        )
+
+        val checkedButton = binding.radioButtonGroup.checkedRadioButtonId
+
+        binding.button2.setOnClickListener {view:View->
+
+            if (binding.radioButton3.isChecked) {
+                view.findNavController().navigate(R.id.action_gameFragment_to_gameWonFragment)
+            }else{
+                view.findNavController().navigate(R.id.action_gameFragment_to_gameOverFragment)
+            }
+        }
+
+
+
+
+        return binding.root
+
+
     }
 
     companion object {

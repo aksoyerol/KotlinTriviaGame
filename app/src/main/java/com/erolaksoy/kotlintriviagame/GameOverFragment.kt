@@ -26,6 +26,8 @@ class GameOverFragment : Fragment() {
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
+
+
         }
     }
 
@@ -35,7 +37,11 @@ class GameOverFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_game_over, container, false)
+
+
     }
+
+
 
     companion object {
         /**
